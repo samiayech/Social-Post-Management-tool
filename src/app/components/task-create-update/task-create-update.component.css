@@ -1,0 +1,10 @@
+mat-form-field{
+    width: 100%;
+}
+.add_icon, .edit_icon{
+    font-size: 25px;
+    color: #009688;
+    margin-right: 20px;
+    margin-top: 25px;
+    cursor: pointer;
+}

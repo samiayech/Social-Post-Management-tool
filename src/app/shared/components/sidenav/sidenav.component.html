@@ -1,0 +1,53 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')"
+               (closed)="events.push('close!')"  style="background-color:wheat">
+
+               <mat-toolbar-row (click)="toggleMenu()">
+   <mat-icon (click)="toggleMenu()">menu</mat-icon> Social Post Management
+  </mat-toolbar-row>
+    <mat-toolbar>  
+  <mat-toolbar-row (click)="toggleMenu()">
+   <mat-icon>home</mat-icon><a routerLink = "home"> Home
+  </a></mat-toolbar-row>
+
+  <mat-toolbar-row (click)="toggleMenu()">
+    <mat-icon>person</mat-icon><a routerLink = "campaign"> Campaigns</a>
+  </mat-toolbar-row>
+
+    <mat-toolbar-row (click)="toggleMenu()">
+    <mat-icon>dashboard</mat-icon> <a routerLink = "task">Tasks</a>
+  </mat-toolbar-row>
+
+
+</mat-toolbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+     <mat-toolbar style="background-color:wheat"> 
+  
+ <mat-icon (click)="toggleMenu()">menu</mat-icon>
+    <!-- <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p> -->
+    <!-- <p><button mat-button (click)="sidenav.toggle()"></button></p> -->
+    Social Post Management
+    </mat-toolbar>
+
+     <!-- <mat-tab-group>
+   <mat-tab>
+    <ng-template mat-tab-label>
+      Campaigns
+    </ng-template>
+    <h1>Campaigns</h1>
+    <p>...</p>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>mat-icon</mat-icon> Tasks
+    </ng-template>
+    <h1>Tasks</h1>
+    <p>...</p>
+  </mat-tab>
+</mat-tab-group>  -->
+
+<router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

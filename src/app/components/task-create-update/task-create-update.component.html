@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" fxFlexFill>
+    <div *ngIf="task.id; then edit else create"></div>
+    <ng-template #create>
+      <mat-icon class="add_icon" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
+      <h3 mat-dialog-title>Add new task</h3>
+  </ng-template>
+    <ng-template #edit>
+      <mat-icon class="edit_icon" fontSet="fas" fontIcon="fa-pen"></mat-icon>
+    <h3 mat-dialog-title>Edit task</h3>
+  </ng-template>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Title*</mat-label>
+    <input matInput [(ngModel)]="task.title">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="task.description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Belongs to Campaign</mat-label>
+    <mat-select [(value)]="selected" [(ngModel)]="task.campaignId">
+      <mat-option *ngFor="let campaign of campaigns" [value]= "campaign.id">
+        {{campaign.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="flex-end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="task" cdkFocusInitial>Save</button>
+</div>

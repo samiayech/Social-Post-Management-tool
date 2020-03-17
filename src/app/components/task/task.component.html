@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutGap="auto">
+    <h2>Tasks</h2>
+    <mat-icon class="add_icon" fontSet="fas" fontIcon="fa-plus-circle" (click)="createTask()"></mat-icon>
+</div>
+    <!-- show tasks table -->
+<table mat-table  [dataSource]= "dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element"> <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element?.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="campaign">
+        <th mat-header-cell *matHeaderCellDef> Campaign </th>
+        <td mat-cell *matCellDef="let element"> {{element.campaign?.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editDelete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon class="edit_icon" fontSet="fas" fontIcon="fa-pen" (click) = "updateTask(element)"></mat-icon>
+            <mat-icon fontSet="fas" fontIcon="fa-trash" (click) = "deleteTask(element.id)"></mat-icon>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="assignedUser">
+        <th mat-header-cell *matHeaderCellDef> Assigned User </th>
+        <td mat-cell *matCellDef="let element"> {{element.assignedUser?.firstName}} {{element.assignedUser?.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef><mat-icon fontSet="fas" fontIcon="fa-calendar"></mat-icon></th>
+        <td mat-cell *matCellDef="let element">{{element.created | date:"dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  

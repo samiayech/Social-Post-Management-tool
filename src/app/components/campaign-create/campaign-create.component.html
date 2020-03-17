@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" fxFlexFill>
+    <div *ngIf="campaign.id; then edit else create"></div>
+    <ng-template #create>
+      <mat-icon class="add_icon" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
+      <h3 mat-dialog-title>Add new campaign</h3>
+  </ng-template>
+    <ng-template #edit>
+      <mat-icon class="edit_icon" fontSet="fas" fontIcon="fa-pen"></mat-icon>
+    <h3 mat-dialog-title>Edit campaign</h3>
+  </ng-template>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Title*</mat-label>
+    <input matInput [(ngModel)]="campaign.title">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Indicate priority with color</mat-label>
+    <input matInput [value]= "color"
+     [style.background]="campaign.color" [style.background]="color"
+       [(colorPicker)]="color" [(ngModel)]="campaign.color" (colorPickerClose)= "pickColor(color)" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Icon</mat-label>
+      <input matInput [value]= "icon" [ipFallbackIcon] = "campaign.icon" [(iconPicker)]= "icon" [(ngModel)]="campaign.icon" (iconPickerSelect)="onIconPickerSelect($event)"> 
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="flex-end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="campaign" cdkFocusInitial>Save</button>
+</div>

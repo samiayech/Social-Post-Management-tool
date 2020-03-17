@@ -1,0 +1,33 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-title
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+}
+
+.date_panel{
+  margin-right: 40px;
+}
+.edit_icon{
+  margin-right: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.add_icon{
+  font-size: 30px;
+  color: #009688;
+  margin-right: 20px;
+  margin-top: 25px;
+  cursor: pointer;
+}
